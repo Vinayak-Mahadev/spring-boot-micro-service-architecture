@@ -8,13 +8,3 @@ spring:
 hystrix:
   dashboard:
     proxy-stream-allow-list: "*"
-
-
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://sample.microservice.com:8761/eureka/
-  instance:
-    hostname: sample.microservice.com

@@ -2,6 +2,14 @@
 REM Prepisd by Vinayak-Mahadev (vinayakmahadev.nm@gmail.com)
 
 echo Project path : %cd%
+echo Building module [cloud-config-sever] - please wait
+echo --------------------------------------------------------------------------------------------------
+start cmd.exe /c "cd %cd%/cloud-config-sever && mvn clean install  && exit"
+echo --------------------------------------------------------------------------------------------------
+echo [cloud-config-sever] is builded successfully
+pause
+
+echo Project path : %cd%
 echo Building module [department-service] - please wait
 echo --------------------------------------------------------------------------------------------------
 start cmd.exe /c "cd %cd%/department-service && mvn clean install  && exit"
@@ -52,6 +60,17 @@ echo ---------------------------------------------------------------------------
 pause
 
 
+echo Starting service-registry
+start cmd.exe /c "java -Xms25M -Xmx50M -jar %cd%/service-registry/target/service-registry.jar"
+echo --------------------------------------------------------------------------------------------------
+pause
+
+echo --------------------------------------------------------------------------------------------------
+echo Starting cloud-config-sever
+start cmd.exe /c "java -Xms25M -Xmx50M -jar %cd%/cloud-config-sever/target/cloud-config-sever.jar"
+echo --------------------------------------------------------------------------------------------------
+pause
+
 echo --------------------------------------------------------------------------------------------------
 echo Starting department-service
 start cmd.exe /c "java -Xms25M -Xmx50M -jar %cd%/department-service/target/department-service.jar"
@@ -65,11 +84,6 @@ pause
 
 echo Starting cloud-gateway
 start cmd.exe /c "java -Xms25M -Xmx50M -jar %cd%/cloud-gateway/target/cloud-gateway.jar"
-echo --------------------------------------------------------------------------------------------------
-pause
-
-echo Starting service-registry
-start cmd.exe /c "java -Xms25M -Xmx50M -jar %cd%/service-registry/target/service-registry.jar"
 echo --------------------------------------------------------------------------------------------------
 pause
 
